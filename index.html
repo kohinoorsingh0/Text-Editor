@@ -1,62 +1,379 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Text Editor</title>
-    <link rel="stylesheet" href="index.css">
-</head>
-<body>
-    <div class="main-container"  >
-        <div class="edit-tools">
-            <div class="head-toolbar">
-                <input type="text" placeholder="File Name" value="File Name" id="filename" >
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="edit-tools">
+        <div class="head-toolbar">
+          <input
+            type="text"
+            placeholder="File Name"
+            value="File Name"
+            id="filename"
+          />
 
-                <select id="file-save">
-                    <option value="" selected="true" hidden >File</option>
-                    <option value="">New File</option>
-                    <option value="">Save As PDF</option>
-                    <option value="">Save As Text</option>
-                </select>
+          <select id="file-save">
+            <option value="" selected="true" hidden>File</option>
+            <option value="">New File</option>
+            <option value="">Save As PDF</option>
+            <option value="">Save As Text</option>
+          </select>
 
-                <select id="format">
-                    <option value="" selected="true" hidden >Format</option>
-                    <option value="">Heading 1</option>
-                    <option value="">Heading 2</option>
-                    <option value="">Heading 3</option>
-                    <option value="">Heading 4</option>
-                    <option value="">Heading 5</option>
-                    <option value="">Heading 6</option>
-                    <option value="">Paragraph</option>
-                    
-                </select>
+          <select id="format">
+            <option value="" selected="true" hidden>Format</option>
+            <option value="">Heading 1</option>
+            <option value="">Heading 2</option>
+            <option value="">Heading 3</option>
+            <option value="">Heading 4</option>
+            <option value="">Heading 5</option>
+            <option value="">Heading 6</option>
+            <option value="">Paragraph</option>
+          </select>
 
-                <select id="font-size">
-                    <option value="" selected="true" hidden >Font Size</option>
-                    <option value="">Extra Small</option>
-                    <option value="">Small</option>
-                    <option value="">Medium</option>
-                    <option value="">Large</option>
-                    <option value="">Extra Large</option>
-                    <option value="">Big</option>
-                   
-                    
-                </select>
+          <select id="font-size">
+            <option value="" selected="true" hidden>Font Size</option>
+            <option value="">Extra Small</option>
+            <option value="">Small</option>
+            <option value="">Medium</option>
+            <option value="">Large</option>
+            <option value="">Extra Large</option>
+            <option value="">Big</option>
+          </select>
 
-                <div class="color-picker-container">
-                    <span>Color</span>
-                    <input type="color" id="color-picker" >
-                </div>
+          <div class="color-picker-container">
+            <span>Color</span>
+            <input type="color" id="color-picker" />
+          </div>
 
-                <div class="backgroundColor-picker-container">
-                    <span>Background Color</span>
-                    <input type="color" id="backgroundColor-picker" >
-                </div>
-            </div>
-            <div class="button-toolbar"></div>
+          <div class="backgroundColor-picker-container">
+            <span>Background Color</span>
+            <input type="color" id="backgroundColor-picker" />
+          </div>
         </div>
-        <div class="editable-container" contenteditable="true"></div>
+        <div class="button-toolbar">
+          <button id="undo">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              color="currentColor"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M3 8H15C18.3137 8 21 10.6863 21 14C21 17.3137 18.3137 20 15 20H11"
+              ></path>
+              <path
+                d="M7 4L5.8462 4.87652C3.94873 6.31801 3 7.03875 3 8C3 8.96125 3.94873 9.68199 5.8462 11.1235L7 12"
+              ></path>
+            </svg>
+          </button>
+
+          <button id="redo">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              color="currentColor"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M21 8H9C5.68629 8 3 10.6863 3 14C3 17.3137 5.68629 20 9 20H13"
+              ></path>
+              <path
+                d="M17 4L18.1538 4.87652C20.0513 6.31801 21 7.03875 21 8C21 8.96125 20.0513 9.68199 18.1538 11.1235L17 12"
+              ></path>
+            </svg>
+          </button>
+          <button id="bold">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              color="currentColor"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M13 4H10C8.11438 4 7.17157 4 6.58579 4.58579C6 5.17157 6 6.11438 6 8V12H13C15.2091 12 17 10.2091 17 8C17 5.79086 15.2091 4 13 4Z"
+              ></path>
+              <path
+                d="M14 12H6V16C6 17.8856 6 18.8284 6.58579 19.4142C7.17157 20 8.11438 20 10 20H14C16.2091 20 18 18.2091 18 16C18 13.7909 16.2091 12 14 12Z"
+              ></path>
+            </svg>
+          </button>
+          <button id="underline">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              color="currentColor"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M5.5 3V11.5C5.5 15.0899 8.41015 18 12 18C15.5899 18 18.5 15.0899 18.5 11.5V3"
+              ></path>
+              <path d="M3 21H21"></path>
+            </svg>
+          </button>
+          <button id="italic">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              color="currentColor"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            >
+              <path d="M10.6667 4H20"></path>
+              <path d="M7.99872 20L15.9987 4"></path>
+              <path d="M3.99872 20L13.3321 20"></path>
+            </svg>
+          </button>
+          <button id="strikeThrough">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              color="currentColor"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            >
+              <path d="M4 12H20" stroke-linejoin="round"></path>
+              <path
+                d="M17.5 7.66667C17.5 5.08934 15.0376 3 12 3C8.96243 3 6.5 5.08934 6.5 7.66667C6.5 8.15279 6.55336 8.59783 6.6668 9M6 16.3333C6 18.9107 8.68629 21 12 21C15.3137 21 18 19.6667 18 16.3333C18 13.9404 16.9693 12.5782 14.9079 12"
+              ></path>
+            </svg>
+          </button>
+          <button id="justifyLeft">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              color="currentColor"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M3 3H11"></path>
+              <path d="M3 9H11"></path>
+              <path d="M3 15H21"></path>
+              <path d="M3 21H21"></path>
+            </svg>
+          </button>
+          <button id="justifyCenter">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              color="currentColor"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M3 3H21"></path>
+              <path d="M8 9H16"></path>
+              <path d="M3 15H21"></path>
+              <path d="M8 21H16"></path>
+            </svg>
+          </button>
+          <button id="justifyRight">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              color="currentColor"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M13 3H21"></path>
+              <path d="M13 9H21"></path>
+              <path d="M3 15H21"></path>
+              <path d="M3 21H21"></path>
+            </svg>
+          </button>
+          <button id="justifyFull">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              color="currentColor"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M3 3H21"></path>
+              <path d="M3 9H21"></path>
+              <path d="M3 15H21"></path>
+              <path d="M3 21H21"></path>
+            </svg>
+          </button>
+          <button id="orderedList">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              color="currentColor"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            >
+              <path d="M10.9961 6L20.9961 6"></path>
+              <path d="M10.9961 12L20.9961 12"></path>
+              <path d="M10.9961 18L20.9961 18"></path>
+              <path
+                d="M2.99609 15H4.49609C4.77489 15 4.91428 15 5.0302 15.0231C5.50623 15.1177 5.87835 15.4899 5.97304 15.9659C5.99609 16.0818 5.99609 16.2212 5.99609 16.5C5.99609 16.7788 5.99609 16.9182 5.97304 17.0341C5.87835 17.5101 5.50623 17.8823 5.0302 17.9769C4.91428 18 4.77489 18 4.49609 18C4.2173 18 4.0779 18 3.96199 18.0231C3.48596 18.1177 3.11384 18.4899 3.01915 18.9659C2.99609 19.0818 2.99609 19.2212 2.99609 19.5V20.4C2.99609 20.6828 2.99609 20.8243 3.08396 20.9121C3.17183 21 3.31325 21 3.59609 21H5.99609"
+                stroke-linejoin="round"
+              ></path>
+              <path
+                d="M2.99609 9H4.49609M4.49609 9H5.99609M4.49609 9V4C4.49609 3.5286 4.49609 3.29289 4.34965 3.14645C4.2032 3 3.9675 3 3.49609 3H2.99609"
+                stroke-linejoin="round"
+              ></path>
+            </svg>
+          </button>
+          <button id="unorderedList">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              color="currentColor"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            >
+              <path d="M8 5.5L20 5.5"></path>
+              <path d="M8 12.5L20 12.5"></path>
+              <path d="M8 19.5L20 19.5"></path>
+              <path
+                d="M4.375 5.5H4.25M4.5 5.5C4.5 5.63807 4.38807 5.75 4.25 5.75C4.11193 5.75 4 5.63807 4 5.5C4 5.36193 4.11193 5.25 4.25 5.25C4.38807 5.25 4.5 5.36193 4.5 5.5Z"
+                stroke-linejoin="round"
+              ></path>
+              <path
+                d="M4.375 12.5H4.25M4.5 12.5C4.5 12.6381 4.38807 12.75 4.25 12.75C4.11193 12.75 4 12.6381 4 12.5C4 12.3619 4.11193 12.25 4.25 12.25C4.38807 12.25 4.5 12.3619 4.5 12.5Z"
+                stroke-linejoin="round"
+              ></path>
+              <path
+                d="M4.375 19.5H4.25M4.5 19.5C4.5 19.6381 4.38807 19.75 4.25 19.75C4.11193 19.75 4 19.6381 4 19.5C4 19.3619 4.11193 19.25 4.25 19.25C4.38807 19.25 4.5 19.3619 4.5 19.5Z"
+                stroke-linejoin="round"
+              ></path>
+            </svg>
+          </button>
+          <button id="linkAdd">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              color="currentColor"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M14.9961 17H16.9961C19.7575 17 21.9961 14.7614 21.9961 12C21.9961 9.23858 19.7575 7 16.9961 7H14.9961M8.99609 17H6.99609C4.23467 17 1.99609 14.7614 1.99609 12C1.99609 9.23858 4.23467 7 6.99609 7H8.99609"
+              ></path>
+              <path d="M8.49609 12H15.4961"></path>
+            </svg>
+          </button>
+          <button id="linkOff">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              color="currentColor"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            >
+              <path d="M1.99609 2L21.9961 22"></path>
+              <path
+                d="M8.99609 17C7.62926 17 6.99609 17 6.99609 17C4.23467 17 1.99609 14.7614 1.99609 12C1.99609 9.23858 4.23467 7 6.99609 7"
+                stroke-linejoin="round"
+              ></path>
+              <path
+                d="M20.9965 15C21.6241 14.1643 21.9961 13.1256 21.9961 12C21.9961 9.23858 19.7575 7 16.9961 7H13.4961"
+                stroke-linejoin="round"
+              ></path>
+              <path d="M16.9961 17H14.9961" stroke-linejoin="round"></path>
+              <path d="M8.49609 12H11.9961" stroke-linejoin="round"></path>
+            </svg>
+          </button>
+          <button id="showCode">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              color="currentColor"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M15 4L9 20"></path>
+              <path
+                d="M5.99997 16C5.99997 16 2.00001 13.054 2 12C1.99999 10.9459 6 8 6 8"
+              ></path>
+              <path
+                d="M18 8C18 8 22 10.946 22 12C22 13.0541 18 16 18 16"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="editable-container" contenteditable="true"></div>
     </div>
     <script src="index.js"></script>
-</body>
+  </body>
 </html>
