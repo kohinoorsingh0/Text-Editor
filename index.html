@@ -56,7 +56,7 @@
           </div>
         </div>
         <div class="button-toolbar">
-          <button id="undo">
+          <button id="undo" onclick="formatDoc('undo')" > 
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -78,7 +78,7 @@
             </svg>
           </button>
 
-          <button id="redo">
+          <button onclick="formatDoc('redo')" id="redo">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -99,7 +99,7 @@
               ></path>
             </svg>
           </button>
-          <button id="bold">
+          <button onclick="formatDoc('bold')" id="bold">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -120,7 +120,7 @@
               ></path>
             </svg>
           </button>
-          <button id="underline">
+          <button onclick="formatDoc('underline')" id="underline">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -139,7 +139,7 @@
               <path d="M3 21H21"></path>
             </svg>
           </button>
-          <button id="italic">
+          <button onclick="formatDoc('italic')" id="italic">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -156,7 +156,7 @@
               <path d="M3.99872 20L13.3321 20"></path>
             </svg>
           </button>
-          <button id="strikeThrough">
+          <button onclick="formatDoc('strikeThrough')" id="strikeThrough">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -174,7 +174,7 @@
               ></path>
             </svg>
           </button>
-          <button id="justifyLeft">
+          <button onclick="formatDoc('justifyLeft')" id="justifyLeft">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -193,7 +193,7 @@
               <path d="M3 21H21"></path>
             </svg>
           </button>
-          <button id="justifyCenter">
+          <button onclick="formatDoc('justifyCenter')" id="justifyCenter">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -212,7 +212,7 @@
               <path d="M8 21H16"></path>
             </svg>
           </button>
-          <button id="justifyRight">
+          <button onclick="formatDoc('justifyRight')" id="justifyRight">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -231,7 +231,7 @@
               <path d="M3 21H21"></path>
             </svg>
           </button>
-          <button id="justifyFull">
+          <button onclick="formatDoc('justifyFull')" id="justifyFull">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -250,7 +250,7 @@
               <path d="M3 21H21"></path>
             </svg>
           </button>
-          <button id="orderedList">
+          <button onclick="formatDoc('insertOrderedList')" id="orderedList">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -275,7 +275,7 @@
               ></path>
             </svg>
           </button>
-          <button id="unorderedList">
+          <button onclick="formatDoc('insertUnorderedList')" id="unorderedList">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -304,7 +304,7 @@
               ></path>
             </svg>
           </button>
-          <button id="linkAdd">
+          <button onclick="handleAddLink()" id="linkAdd">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -323,7 +323,7 @@
               <path d="M8.49609 12H15.4961"></path>
             </svg>
           </button>
-          <button id="linkOff">
+          <button onclick="formatDoc('unlink')" id="linkOff">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -348,7 +348,7 @@
               <path d="M8.49609 12H11.9961" stroke-linejoin="round"></path>
             </svg>
           </button>
-          <button id="showCode">
+          <button onclick="formatDoc()" id="showCode">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"

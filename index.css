@@ -83,12 +83,13 @@ select{
     padding: 24px;
     display: flex;
     flex-direction: column;
+    border-bottom: 1px solid rgb(216, 215, 215);
     
 }
 
 .head-toolbar{
     height: 50%;
-    border-bottom: 1px solid rgb(216, 215, 215);
+    
     display: flex;
     flex-direction: row;
     /* justify-content: space-between; */
