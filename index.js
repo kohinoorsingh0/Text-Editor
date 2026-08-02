@@ -39,7 +39,7 @@ content[0].addEventListener("mouseenter", () => {
 })
 
 
-      let fileName = document.getElementById("filename")
+let fileName = document.getElementById("filename")
 
 const handleFileExport = (fileType) => {
     if(fileType === "new"){
@@ -59,3 +59,34 @@ const handleFileExport = (fileType) => {
         a.click()
     }
 }
+
+// Highlight active formatting buttons (bold/italic/underline/strike + alignment + lists)
+const toggleButtons = {
+    bold: document.getElementById('bold'),
+    italic: document.getElementById('italic'),
+    underline: document.getElementById('underline'),
+    strikeThrough: document.getElementById('strikeThrough'),
+    justifyLeft: document.getElementById('justifyLeft'),
+    justifyCenter: document.getElementById('justifyCenter'),
+    justifyRight: document.getElementById('justifyRight'),
+    justifyFull: document.getElementById('justifyFull'),
+    insertOrderedList: document.getElementById('orderedList'),
+    insertUnorderedList: document.getElementById('unorderedList'),
+}
+
+const updateActiveStates = () => {
+    Object.entries(toggleButtons).forEach(([cmd, btn]) => {
+        if (!btn) return
+        try {
+            if (document.queryCommandState(cmd)) {
+                btn.classList.add('active-format')
+            } else {
+                btn.classList.remove('active-format')
+            }
+        } catch (e) {}
+    })
+}
+
+document.addEventListener('selectionchange', updateActiveStates)
+content[0].addEventListener('keyup', updateActiveStates)
+content[0].addEventListener('mouseup', updateActiveStates)
