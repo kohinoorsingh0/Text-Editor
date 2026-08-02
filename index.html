@@ -17,11 +17,11 @@
             id="filename"
           />
 
-          <select id="file-save">
-            <option value="" selected="true" hidden>File</option>
-            <option value="">New File</option>
-            <option value="">Save As PDF</option>
-            <option value="">Save As Text</option>
+          <select id="file-save" onchange="handleFileExport(this.value); this.selectedIndex = 0 " >
+            <option value="" selected="true" hidden>Create / Save</option>
+            <option value="new">New File</option>
+            <option value="pdf">Save As PDF</option>
+            <option value="txt">Save As Text</option>
           </select>
 
           <select id="format" onchange="formatDoc('formatBlock', this.value); this.selectedIndex = 0 " >
@@ -375,5 +375,6 @@
       <div class="editable-container" contenteditable="true"></div>
     </div>
     <script src="index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   </body>
 </html>
